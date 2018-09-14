@@ -1,0 +1,12 @@
+<?php 
+//echo $block->getDiscount(); 
+$customerSession = $block->getCustomerSession();
+
+if($customerSession->isLoggedIn()){
+	$discount = $customerSession->getCustomer()->getCustomerDiscount();
+	$_savingPercent = 100 - round(($discount / 30)*100);
+	echo 'Your save '.$_savingPercent . '%';
+	$finalValue = ($discount*30)/100;
+	echo $finalValue;
+}
+?>
